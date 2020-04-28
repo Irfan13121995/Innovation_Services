@@ -1,0 +1,5 @@
+﻿customerID,name,surname,address,country,postcode,phonenumber,province,desiredPaymentMethod
+1,Omar,Hanafi,Street 5,Netherlands,9999AA,612345678,Noord-Brabant,ING
+2,Irfan,Ahmed,Street 6,Netherlands,8888AA,698765432,Noord-Brabant,ABN
+3,Dion,van Helvoirt,Street 7,Netherlands,7777AA,613572468,Groningen,RABO
+4,Massimo,Manca,Street 8,Netherlands,6666AA,698761234,Limburg,ING

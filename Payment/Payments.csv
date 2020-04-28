@@ -1,0 +1,4 @@
+customerID,orderID,amount,paid,name,surname,shipmentAddress,shipmentCountry
+1,1,300,Succeeded,Omar,Hanafi,Street 5,Netherlands
+2,2,250,Failed,Irfan,Ahmed,Street 6,Netherlands
+2,3,250, Succeeded,Irfan,Ahmed, Street 6, Netherlands

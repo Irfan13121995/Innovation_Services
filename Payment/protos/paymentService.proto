@@ -1,0 +1,81 @@
+syntax = "proto3"; // protocol buffers version
+
+//Services:
+//
+//1. Receive personal information of paying customer
+//2. Receive payment options (banks)
+//3. Receive/check information for payment
+//4. Create payment record with id and (for now) failed payment (or untried)
+
+//5. Send confirmation to customer (dont know if necessary)
+//
+package ordermgt;
+
+service PaymentService{
+
+    //Receive personal information of paying customer
+    rpc GetPersonalInformation(CustomerID) returns (CustomerInformation) {}
+
+    //Receive payment options (banks)
+    rpc GetPaymentOptions(Empty) returns (PaymentOptions) {}
+
+    //Check payment credentials
+    rpc CheckPaymentCredentials(Credentials) returns (Status) {}
+
+    //Create payment record with id and (for now) untried.
+    rpc CreatePaymentRecord(OrderInformation) returns (Succeeded){}
+
+    //Send confirmation to customer
+    rpc SendConfirmation(OrderInformation) returns (MailMessage) {}
+
+}
+
+message CustomerID {
+    int32 customerID = 1;
+}
+
+message CustomerInformation {
+    int32 customerID = 1;
+    string name = 2;
+    string surname = 3;
+    string address = 4;
+    string country = 5;
+    string postcode = 6;
+    int32 phonenumber = 7;
+    string province = 8;
+    string desiredPaymentMethod = 9;
+}
+
+message Empty {}
+
+message PaymentOptions {
+    repeated string name = 1;
+}
+
+message Credentials {
+    string username = 1;
+    string password = 2;
+}
+
+message Status {
+    string result = 1;
+}
+
+message OrderInformation {
+    int32 customerID = 1;
+    int32 orderID = 2;
+    float amount = 3;
+    string paid = 4;
+    string shipmentAddress = 5;
+    string shipmentCountry = 6;
+    string name = 7;
+    string surname = 8;
+}
+
+message Succeeded {
+    bool result = 1;
+}
+
+message MailMessage {
+    string confirmationMail = 1;
+}
