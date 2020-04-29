@@ -25,16 +25,16 @@ Subsequent response definitions will only detail the expected value of the `data
 ```json
 [
     {
-    "p_id": 123,
+    "p_id": '123',
     "p_type": "Laptop",
     "name": "ASUS",
-    "quantity":1
+    "quantity": '1'
     },
     {
-    "p_id": 115,
+    "p_id": '115',
     "p_type": "Phone",
     "name": "iPhone",
-    "quantity":2
+    "quantity": '2'
     }   
 ]
 ```
@@ -46,10 +46,10 @@ Subsequent response definitions will only detail the expected value of the `data
 
 **Arguments**
 
-- `"p_id":integer` a globally unique id for the product
+- `"p_id":string` a globally unique id for the product
 - `"p_type":string` type of the product
 - `"name":string` name of the product
-- `"quantity":integer` quantity of the product
+- `"quantity":string` quantity of the product
 
 **Response**
 
@@ -57,10 +57,10 @@ Subsequent response definitions will only detail the expected value of the `data
 
 ```json
 {
-    "p_id": 115,
+    "p_id": '115',
     "p_type": "Phone",
     "name": "iPhone",
-    "quantity":2
+    "quantity": '2'
 } 
 ```
 
@@ -75,10 +75,10 @@ Subsequent response definitions will only detail the expected value of the `data
 
 ```json
 {
-    "p_id": 115,
+    "p_id": '115',
     "p_type": "Phone",
     "name": "iPhone",
-    "quantity":2
+    "quantity": '2'
 } 
 ```
 ## Adding Existing product to cart
@@ -87,10 +87,10 @@ Subsequent response definitions will only detail the expected value of the `data
 
 **Arguments**
 
-- `"p_id":integer` a globally unique id for the product
+- `"p_id":string` a globally unique id for the product
 - `"p_type":string` type of the product
 - `"name":string` name of the product
-- `"quantity":integer` quantity of the product
+- `"quantity":string` quantity of the product
 
 **Response**
 
@@ -99,10 +99,10 @@ Subsequent response definitions will only detail the expected value of the `data
 
 ```json
 {
-    "p_id": 115,
+    "p_id": '115',
     "p_type": "Phone",
     "name": "iPhone",
-    "quantity":2+1
+    "quantity": '3'
 } 
 ```
 
@@ -116,6 +116,3 @@ Subsequent response definitions will only detail the expected value of the `data
 
 - `404 Not Found` if the product does not exist
 - `204 No Content` on success
-
-
-
