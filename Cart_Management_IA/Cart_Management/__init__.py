@@ -93,7 +93,7 @@ class Product(Resource):
             return {'message': 'Product not found', 'data': {}}, 404
 
         del shelf[p_id]
-        return '', 204
+        return 'Product removed from cart', 204
 
 
 api.add_resource(ProductList, '/products')
