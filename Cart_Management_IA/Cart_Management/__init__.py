@@ -1,43 +1,3 @@
-import markdown
-import os
-import shelve
-
-# Import the framework
-from flask import Flask, g
-from flask_restful import Resource, Api, reqparse
-
-# Create an instance of Flask
-app = Flask(__name__)
-
-# Create the API
-api = Api(app)
-
-def get_db():
-    db = getattr(g, '_database', None)
-    if db is None:
-        db = g._database = shelve.open("products.db")
-    return db
-
-@app.teardown_appcontext
-def teardown_db(exception):
-    db = getattr(g, '_database', None)
-    if db is not None:
-        db.close()
-
-@app.route("/")
-def index():
-    """Present some documentation"""
-
-    # Open the README file
-    with open(os.path.dirname(app.root_path) + '/Readme.md', 'r') as markdown_file:
-
-        # Read the content of the file
-        content = markdown_file.read()
-
-        # Convert to HTML
-        return markdown.markdown(content)
-
-
 class ProductList(Resource):
     def get(self):
         shelf = get_db()
@@ -81,9 +41,11 @@ class Product(Resource):
         keys = list(shelf.keys())
         for key in keys:
             if key["p_id"] == p_id:
-                key["quantity"] += 1
+                x = int(key["quantity"])
+                x += 1
+                key["quantity"] = str(x)
 
-            return {'message': 'Success', 'data': shelf[p_id]}, 201
+            return {'message': 'Success', 'data': key}, 201
         return {'message': 'Product not fount', 'data': {}}, 404
 
     def delete(self, p_id):
@@ -98,4 +60,4 @@ class Product(Resource):
 
 
 api.add_resource(ProductList, '/products')
-api.add_resource(Product, '/product/<integer:p_id>')
+api.add_resource(Product, '/product/<string:p_id>')
