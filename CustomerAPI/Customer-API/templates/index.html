@@ -1,0 +1,42 @@
+<h1><strong>Customer API</strong></h1>
+<h2>Description:</h2>
+<p>This rest API enables the retrievel of all customers, individual customers and the creation and modification of existing customers.</p>
+<h3>List all customers</h3>
+<p><strong>Definition</strong></p>
+<p><code>GET /customers</code></p>
+<p><strong>Response</strong></p>
+<ul>
+<li><code>200 OK</code> on success</li>
+</ul>
+<div>
+<pre>[<br /> {<br /> "customer_id": "0001",<br /> "name": "Henk Jansen",<br /> "address": "Wilgenstraat 45",<br /> "zipcode": "1234AB",<br /> "City": "Amsterdam",<br /> "email": "JADS"<br /> }<br /> ]</pre>
+</div>
+<h3>Creating a new customer</h3>
+<p><strong>Definition</strong></p>
+<p><code>POST /customers</code></p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><code>"customer_id":string</code> a unique ID for the customer (e.g. c0001)</li>
+<li><code>"name":string</code> name of the customer</li>
+<li><code>"address":string</code> adress of the customer</li>
+<li><code>"zipcode":string</code> zipcode</li>
+<li><code>"City":string</code> city</li>
+<li><code>"email":string</code> e-mail of the customer</li>
+</ul>
+<p><strong>Response</strong></p>
+<ul>
+<li><code>201 Created</code> if succesfully created</li>
+</ul>
+<div>
+<pre>{<br /> "message": "Customer created",<br /> "data": {<br /> "customer_id": "0002",<br /> "name": "Piet Jansen",<br /> "address": "Wilgenstraat 47",<br /> "zipcode": "1234AB",<br /> "City": "Amsterdam",<br /> "email": "test2@domain.com"<br /> }<br />}</pre>
+<h3>Retrieve a customer</h3>
+<p><code>GET /customer/&lt;customer_id&gt;</code></p>
+<p><strong>Response</strong></p>
+<ul>
+<li><code>404 Not Found</code> if customer does not exist</li>
+<li><code>200 OK</code> if customer exists</li>
+</ul>
+<div>
+<pre>{<br /> "customer_id": "0001",<br /> "name": "Henk Jansen",<br /> "address": "Wilgenstraat 45",<br /> "zipcode": "1234AB",<br /> "City": "Amsterdam",<br /> "email": "JADS"<br /> }</pre>
+</div>
+</div>
