@@ -51,6 +51,8 @@ Subsequent response definitions will only detail the expected value of the `data
 - `"name":string` name of the product
 - `"quantity":string` quantity of the product
 
+```If the product already exist in the cart then quantity is added to the existing product```
+
 **Response**
 
 - `201 Created` on success
@@ -79,30 +81,6 @@ Subsequent response definitions will only detail the expected value of the `data
     "p_type": "Phone",
     "name": "iPhone",
     "quantity": '2'
-} 
-```
-## Adding Existing product to cart
-
-`PUT /product/<p_id>`
-
-**Arguments**
-
-- `"p_id":string` a globally unique id for the product
-- `"p_type":string` type of the product
-- `"name":string` name of the product
-- `"quantity":string` quantity of the product
-
-**Response**
-
-- `201 Created` on success
-- `404 Not Found` if the product does not exist
-
-```json
-{
-    "p_id": '115',
-    "p_type": "Phone",
-    "name": "iPhone",
-    "quantity": '3'
 } 
 ```
 
